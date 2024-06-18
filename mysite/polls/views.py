@@ -40,7 +40,7 @@ class DetailView(generic.DetailView):
         return Question.objects.filter(pub_date__lte=timezone.now())
 
 
-class ResultsView(generic.DeleteView):
+class ResultsView(generic.DetailView):
     model = Question
     template_name = "polls/results.html"
     # setting different template_name than DetailView so there is diff appearance
