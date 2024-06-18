@@ -1,0 +1,12 @@
+{% if latest_question_list %}
+<ul>
+  {% for question in latest_question_list %}
+  <!-- by using url tag, references the url within polls/url with name 'detail' -->
+  <!-- instead of hardcoding: <a href="/polls/{{ question.id }}/">  -->
+  <!-- name the app before the url (polls:detail)  -->
+  <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No polls are available.</p>
+{% endif %}
