@@ -1,6 +1,7 @@
 import datetime
 from django.db import models
 from django.utils import timezone
+from django.contrib import admin
 # Create your models here.
 
 
@@ -13,6 +14,14 @@ class Question(models.Model):
         # Represents question as a string
         return self.question_text
 
+    # use display decorator to customize the field
+    # changed name from was published recently -> published recently?
+    # set the order and made it checkmarks vs "True"
+    @admin.display(
+        boolean=True,
+        ordering="pub_date",
+        description="Published recently?",
+    )
     def was_published_recently(self):
         # returns T/F
         now = timezone.now()
